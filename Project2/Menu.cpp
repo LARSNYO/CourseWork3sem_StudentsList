@@ -70,11 +70,74 @@ void Menu::editStudent() {
     Node<Student>* current = studentList.getHead();
     do {
         if (strcmp(current->data.getSurname(), surname) == 0) {
-            char newAddress[50];
-            std::cout << "Введите новый адрес: ";
-            std::cin >> newAddress;
-            current->data.setAddress(newAddress);
-            std::cout << "Адрес обновлен!" << std::endl;
+            int choice;
+            do {
+                std::cout << "Выберите, что хотите отредактировать:" << std::endl;
+                std::cout << "1. Фамилия" << std::endl;
+                std::cout << "2. Дата рождения" << std::endl;
+                std::cout << "3. Дата поступления" << std::endl;
+                std::cout << "4. Дата отчисления" << std::endl;
+                std::cout << "5. Адрес" << std::endl;
+                std::cout << "6. Группа" << std::endl;
+                std::cout << "7. Закончить редактирование" << std::endl;
+                std::cout << "Ваш выбор: ";
+                std::cin >> choice;
+
+                // Буфер для хранения новых данных
+                char newData[50];
+
+                switch (choice) {
+                case 1:
+                    std::cout << "Введите новую фамилию: ";
+                    std::cin.ignore();  // Игнорируем оставшийся '\n' в буфере
+                    std::cin.getline(newData, 50);
+                    current->data.setSurname(newData);
+                    std::cout << "Фамилия обновлена!" << std::endl;
+                    break;
+                case 2:
+                    std::cout << "Введите новую дату рождения (дд.мм.гггг): ";
+                    std::cin.ignore();
+                    std::cin.getline(newData, 50);
+                    current->data.setBirthDate(newData);
+                    std::cout << "Дата рождения обновлена!" << std::endl;
+                    break;
+                case 3:
+                    std::cout << "Введите новую дату поступления (дд.мм.гггг): ";
+                    std::cin.ignore();
+                    std::cin.getline(newData, 50);
+                    current->data.setEnrollmentDate(newData);
+                    std::cout << "Дата поступления обновлена!" << std::endl;
+                    break;
+                case 4:
+                    std::cout << "Введите новую дату отчисления (дд.мм.гггг): ";
+                    std::cin.ignore();
+                    std::cin.getline(newData, 50);
+                    current->data.setDismissalDate(newData);
+                    std::cout << "Дата отчисления обновлена!" << std::endl;
+                    break;
+                case 5:
+                    std::cout << "Введите новый адрес: ";
+                    std::cin.ignore();
+                    std::cin.getline(newData, 50);
+                    current->data.setAddress(newData);
+                    std::cout << "Адрес обновлен!" << std::endl;
+                    break;
+                case 6:
+                    std::cout << "Введите новую группу: ";
+                    std::cin.ignore();
+                    std::cin.getline(newData, 50);
+                    current->data.setGroup(newData);
+                    std::cout << "Группа обновлена!" << std::endl;
+                    break;
+                case 7:
+                    std::cout << "Завершение редактирования." << std::endl;
+                    break;
+                default:
+                    std::cout << "Неверный выбор. Пожалуйста, выберите снова." << std::endl;
+                    break;
+                }
+            } while (choice != 7);  // Цикл продолжается, пока пользователь не выберет "Закончить редактирование"
+
             return;
         }
         current = current->next;

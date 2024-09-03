@@ -2,7 +2,7 @@
 #define NODE_H
 
 template <typename T>
-class Node {
+struct Node {
 public:
     T data;
     Node* next;
