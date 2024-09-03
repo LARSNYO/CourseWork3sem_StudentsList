@@ -1,12 +1,12 @@
-#include "DoublyLinkedList.h"
+п»ї#include "DoublyLinkedList.h"
 #include "Student.h"
 #include <iostream>
 
-// Конструктор по умолчанию
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 template <typename T>
 DoublyLinkedList<T>::DoublyLinkedList() : head(nullptr), tail(nullptr) {}
 
-// Деструктор
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 template <typename T>
 DoublyLinkedList<T>::~DoublyLinkedList() {
     if (!head) return;
@@ -19,7 +19,7 @@ DoublyLinkedList<T>::~DoublyLinkedList() {
     } while (current != head);
 }
 
-// Метод добавления элемента в конец списка
+// РњРµС‚РѕРґ РґРѕР±Р°РІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РІ РєРѕРЅРµС† СЃРїРёСЃРєР°
 template <typename T>
 void DoublyLinkedList<T>::add(const T& data) {
     Node<T>* newNode = new Node<T>(data);
@@ -37,7 +37,7 @@ void DoublyLinkedList<T>::add(const T& data) {
     }
 }
 
-// Метод удаления элемента из списка
+// РњРµС‚РѕРґ СѓРґР°Р»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РёР· СЃРїРёСЃРєР°
 template <typename T>
 void DoublyLinkedList<T>::remove(const T& data) {
     if (!head) return;
@@ -66,10 +66,10 @@ void DoublyLinkedList<T>::remove(const T& data) {
     } while (current != head);
 }
 
-// Метод получения элемента по индексу
+// РњРµС‚РѕРґ РїРѕР»СѓС‡РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РїРѕ РёРЅРґРµРєСЃСѓ
 template <typename T>
 T DoublyLinkedList<T>::get(int index) const {
-    if (!head) throw std::out_of_range("Список пуст");
+    if (!head) throw std::out_of_range("РЎРїРёСЃРѕРє РїСѓСЃС‚");
 
     Node<T>* current = head;
     int count = 0;
@@ -79,10 +79,10 @@ T DoublyLinkedList<T>::get(int index) const {
         count++;
     } while (current != head);
 
-    throw std::out_of_range("Индекс вне диапазона");
+    throw std::out_of_range("РРЅРґРµРєСЃ РІРЅРµ РґРёР°РїР°Р·РѕРЅР°");
 }
 
-// Метод сортировки списка
+// РњРµС‚РѕРґ СЃРѕСЂС‚РёСЂРѕРІРєРё СЃРїРёСЃРєР°
 template <typename T>
 void DoublyLinkedList<T>::sort() {
     if (!head || head == tail) return;
@@ -102,7 +102,7 @@ void DoublyLinkedList<T>::sort() {
     } while (swapped);
 }
 
-// Метод вставки элемента в отсортированный список
+// РњРµС‚РѕРґ РІСЃС‚Р°РІРєРё СЌР»РµРјРµРЅС‚Р° РІ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ СЃРїРёСЃРѕРє
 template <typename T>
 void DoublyLinkedList<T>::insert(const T& data) {
     Node<T>* newNode = new Node<T>(data);
@@ -129,16 +129,16 @@ void DoublyLinkedList<T>::insert(const T& data) {
         current = current->next;
     } while (current != head);
 
-    // Если вставка после всех
+    // Р•СЃР»Рё РІСЃС‚Р°РІРєР° РїРѕСЃР»Рµ РІСЃРµС…
     add(data);
 }
 
-// Метод сохранения списка в файл
+// РњРµС‚РѕРґ СЃРѕС…СЂР°РЅРµРЅРёСЏ СЃРїРёСЃРєР° РІ С„Р°Р№Р»
 template <typename T>
 void DoublyLinkedList<T>::saveToFile(const std::string& filename) {
     std::ofstream file(filename, std::ios::binary);
     if (!file) {
-        std::cerr << "Ошибка открытия файла для записи." << std::endl;
+        std::cerr << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° РґР»СЏ Р·Р°РїРёСЃРё." << std::endl;
         return;
     }
 
@@ -151,12 +151,12 @@ void DoublyLinkedList<T>::saveToFile(const std::string& filename) {
     file.close();
 }
 
-// Метод загрузки списка из файла
+// РњРµС‚РѕРґ Р·Р°РіСЂСѓР·РєРё СЃРїРёСЃРєР° РёР· С„Р°Р№Р»Р°
 template <typename T>
 void DoublyLinkedList<T>::loadFromFile(const std::string& filename) {
     std::ifstream file(filename, std::ios::binary);
     if (!file) {
-        std::cerr << "Ошибка открытия файла для чтения." << std::endl;
+        std::cerr << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° РґР»СЏ С‡С‚РµРЅРёСЏ." << std::endl;
         return;
     }
 
@@ -169,11 +169,11 @@ void DoublyLinkedList<T>::loadFromFile(const std::string& filename) {
     file.close();
 }
 
-// Метод вывода списка
+// РњРµС‚РѕРґ РІС‹РІРѕРґР° СЃРїРёСЃРєР°
 template <typename T>
 void DoublyLinkedList<T>::display() const {
     if (isEmpty()) {
-        std::cout << "Список пуст." << std::endl;
+        std::cout << "РЎРїРёСЃРѕРє РїСѓСЃС‚." << std::endl;
         return;
     }
 
@@ -184,5 +184,5 @@ void DoublyLinkedList<T>::display() const {
     } while (current != head);
 }
 
-// Эксплицитная инстанцировка шаблона для класса Student
+// Р­РєСЃРїР»РёС†РёС‚РЅР°СЏ РёРЅСЃС‚Р°РЅС†РёСЂРѕРІРєР° С€Р°Р±Р»РѕРЅР° РґР»СЏ РєР»Р°СЃСЃР° Student
 template class DoublyLinkedList<Student>;
