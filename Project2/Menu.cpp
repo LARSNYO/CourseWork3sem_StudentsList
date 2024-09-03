@@ -1,92 +1,92 @@
-#include "Menu.h"
+п»ї#include "Menu.h"
 #include <iostream>
 #include <string>
 
-// Конструктор по умолчанию
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 Menu::Menu() {}
 
-// Метод отображения меню
+// РњРµС‚РѕРґ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РјРµРЅСЋ
 void Menu::displayMenu() {
-    std::cout << "Меню:" << std::endl;
-    std::cout << "1. Добавить студента" << std::endl;
-    std::cout << "2. Удалить студента" << std::endl;
-    std::cout << "3. Редактировать студента" << std::endl;
-    std::cout << "4. Поиск студента" << std::endl;
-    std::cout << "5. Сортировать студентов" << std::endl;
-    std::cout << "6. Показать всех студентов" << std::endl;
-    std::cout << "7. Сохранить в файл" << std::endl;
-    std::cout << "8. Загрузить из файла" << std::endl;
-    std::cout << "9. Выйти" << std::endl;
-    std::cout << "Выберите опцию: ";
+    std::cout << "РњРµРЅСЋ:" << std::endl;
+    std::cout << "1. Р”РѕР±Р°РІРёС‚СЊ СЃС‚СѓРґРµРЅС‚Р°" << std::endl;
+    std::cout << "2. РЈРґР°Р»РёС‚СЊ СЃС‚СѓРґРµРЅС‚Р°" << std::endl;
+    std::cout << "3. Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЃС‚СѓРґРµРЅС‚Р°" << std::endl;
+    std::cout << "4. РџРѕРёСЃРє СЃС‚СѓРґРµРЅС‚Р°" << std::endl;
+    std::cout << "5. РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ СЃС‚СѓРґРµРЅС‚РѕРІ" << std::endl;
+    std::cout << "6. РџРѕРєР°Р·Р°С‚СЊ РІСЃРµС… СЃС‚СѓРґРµРЅС‚РѕРІ" << std::endl;
+    std::cout << "7. РЎРѕС…СЂР°РЅРёС‚СЊ РІ С„Р°Р№Р»" << std::endl;
+    std::cout << "8. Р—Р°РіСЂСѓР·РёС‚СЊ РёР· С„Р°Р№Р»Р°" << std::endl;
+    std::cout << "9. Р’С‹Р№С‚Рё" << std::endl;
+    std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РѕРїС†РёСЋ: ";
 }
 
-// Метод для добавления студента
+// РњРµС‚РѕРґ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ СЃС‚СѓРґРµРЅС‚Р°
 void Menu::addStudent() {
     char surname[50], birthDate[50], enrollmentDate[50], dismissalDate[50], address[50], group[50];
-    std::cout << "Введите фамилию: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: ";
     std::cin.ignore();
     std::cin.getline(surname, 50);
-    std::cout << "Введите дату рождения (дд.мм.гггг): ";
+    std::cout << "Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ СЂРѕР¶РґРµРЅРёСЏ (РґРґ.РјРј.РіРіРіРі): ";
     std::cin.getline(birthDate, 50);
-    std::cout << "Введите дату поступления (дд.мм.гггг): ";
+    std::cout << "Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ (РґРґ.РјРј.РіРіРіРі): ";
     std::cin.getline(enrollmentDate, 50);
-    std::cout << "Введите дату отчисления (дд.мм.гггг): ";
+    std::cout << "Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ РѕС‚С‡РёСЃР»РµРЅРёСЏ (РґРґ.РјРј.РіРіРіРі): ";
     std::cin.getline(dismissalDate, 50);
-    std::cout << "Введите адрес: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ Р°РґСЂРµСЃ: ";
     std::cin.getline(address, 50);
-    std::cout << "Введите группу: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ РіСЂСѓРїРїСѓ: ";
     std::cin.getline(group, 50);
 
     Student student(surname, birthDate, enrollmentDate, dismissalDate, address, group);
     studentList.add(student);
-    std::cout << "Студент добавлен!" << std::endl;
+    std::cout << "РЎС‚СѓРґРµРЅС‚ РґРѕР±Р°РІР»РµРЅ!" << std::endl;
 }
 
-// Метод для удаления студента
+// РњРµС‚РѕРґ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ СЃС‚СѓРґРµРЅС‚Р°
 void Menu::removeStudent() {
     char surname[50];
-    std::cout << "Введите фамилию студента для удаления: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ СЃС‚СѓРґРµРЅС‚Р° РґР»СЏ СѓРґР°Р»РµРЅРёСЏ: ";
     std::cin >> surname;
 
     Node<Student>* current = studentList.getHead();
     do {
         if (strcmp(current->data.getSurname(), surname) == 0) {
             studentList.remove(current->data);
-            std::cout << "Студент удален!" << std::endl;
+            std::cout << "РЎС‚СѓРґРµРЅС‚ СѓРґР°Р»РµРЅ!" << std::endl;
             return;
         }
         current = current->next;
     } while (current != studentList.getHead());
 
-    std::cout << "Студент не найден." << std::endl;
+    std::cout << "РЎС‚СѓРґРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ." << std::endl;
 }
 
-// Метод для редактирования студента
+// РњРµС‚РѕРґ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ СЃС‚СѓРґРµРЅС‚Р°
 void Menu::editStudent() {
     char surname[50];
-    std::cout << "Введите фамилию студента для редактирования: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ СЃС‚СѓРґРµРЅС‚Р° РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ: ";
     std::cin >> surname;
 
     Node<Student>* current = studentList.getHead();
     do {
         if (strcmp(current->data.getSurname(), surname) == 0) {
             char newAddress[50];
-            std::cout << "Введите новый адрес: ";
+            std::cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІС‹Р№ Р°РґСЂРµСЃ: ";
             std::cin >> newAddress;
             current->data.setAddress(newAddress);
-            std::cout << "Адрес обновлен!" << std::endl;
+            std::cout << "РђРґСЂРµСЃ РѕР±РЅРѕРІР»РµРЅ!" << std::endl;
             return;
         }
         current = current->next;
     } while (current != studentList.getHead());
 
-    std::cout << "Студент не найден." << std::endl;
+    std::cout << "РЎС‚СѓРґРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ." << std::endl;
 }
 
-// Метод для поиска студента
+// РњРµС‚РѕРґ РґР»СЏ РїРѕРёСЃРєР° СЃС‚СѓРґРµРЅС‚Р°
 void Menu::searchStudent() {
     char surname[50];
-    std::cout << "Введите фамилию студента для поиска: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ СЃС‚СѓРґРµРЅС‚Р° РґР»СЏ РїРѕРёСЃРєР°: ";
     std::cin >> surname;
 
     Node<Student>* current = studentList.getHead();
@@ -98,41 +98,41 @@ void Menu::searchStudent() {
         current = current->next;
     } while (current != studentList.getHead());
 
-    std::cout << "Студент не найден." << std::endl;
+    std::cout << "РЎС‚СѓРґРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ." << std::endl;
 }
 
-// Метод для сортировки студентов
+// РњРµС‚РѕРґ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё СЃС‚СѓРґРµРЅС‚РѕРІ
 void Menu::sortStudents() {
     studentList.sort();
-    std::cout << "Студенты отсортированы!" << std::endl;
+    std::cout << "РЎС‚СѓРґРµРЅС‚С‹ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅС‹!" << std::endl;
 }
 
-// Метод для отображения всех студентов
+// РњРµС‚РѕРґ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІСЃРµС… СЃС‚СѓРґРµРЅС‚РѕРІ
 void Menu::displayStudents() {
     studentList.display();
 }
 
-// Метод для сохранения списка студентов в файл
+// РњРµС‚РѕРґ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ СЃРїРёСЃРєР° СЃС‚СѓРґРµРЅС‚РѕРІ РІ С„Р°Р№Р»
 void Menu::saveToFile() {
     std::string filename;
-    std::cout << "Введите имя файла для сохранения: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ С„Р°Р№Р»Р° РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ: ";
     std::cin >> filename;
 
     studentList.saveToFile(filename);
-    std::cout << "Список студентов сохранен в файл!" << std::endl;
+    std::cout << "РЎРїРёСЃРѕРє СЃС‚СѓРґРµРЅС‚РѕРІ СЃРѕС…СЂР°РЅРµРЅ РІ С„Р°Р№Р»!" << std::endl;
 }
 
-// Метод для загрузки списка студентов из файла
+// РњРµС‚РѕРґ РґР»СЏ Р·Р°РіСЂСѓР·РєРё СЃРїРёСЃРєР° СЃС‚СѓРґРµРЅС‚РѕРІ РёР· С„Р°Р№Р»Р°
 void Menu::loadFromFile() {
     std::string filename;
-    std::cout << "Введите имя файла для загрузки: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ С„Р°Р№Р»Р° РґР»СЏ Р·Р°РіСЂСѓР·РєРё: ";
     std::cin >> filename;
 
     studentList.loadFromFile(filename);
-    std::cout << "Список студентов загружен из файла!" << std::endl;
+    std::cout << "РЎРїРёСЃРѕРє СЃС‚СѓРґРµРЅС‚РѕРІ Р·Р°РіСЂСѓР¶РµРЅ РёР· С„Р°Р№Р»Р°!" << std::endl;
 }
 
-// Метод для запуска меню
+// РњРµС‚РѕРґ РґР»СЏ Р·Р°РїСѓСЃРєР° РјРµРЅСЋ
 void Menu::run() {
     int choice;
     do {
@@ -165,10 +165,10 @@ void Menu::run() {
             loadFromFile();
             break;
         case 9:
-            std::cout << "Выход из программы." << std::endl;
+            std::cout << "Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹." << std::endl;
             break;
         default:
-            std::cout << "Неверный выбор. Пожалуйста, попробуйте снова." << std::endl;
+            std::cout << "РќРµРІРµСЂРЅС‹Р№ РІС‹Р±РѕСЂ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°." << std::endl;
             break;
         }
     } while (choice != 9);

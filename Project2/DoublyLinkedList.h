@@ -1,4 +1,4 @@
-#ifndef DOUBLY_LINKED_LIST_H
+п»ї#ifndef DOUBLY_LINKED_LIST_H
 #define DOUBLY_LINKED_LIST_H
 
 #include "Node.h"
@@ -15,7 +15,7 @@ public:
     DoublyLinkedList();
     ~DoublyLinkedList();
 
-    // Функции для работы с двусвязным списком
+    // Р¤СѓРЅРєС†РёРё РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РґРІСѓСЃРІСЏР·РЅС‹Рј СЃРїРёСЃРєРѕРј
     void add(const T& data);
     void remove(const T& data);
     T get(int index) const;
@@ -31,7 +31,7 @@ public:
         return head;
     }
 
-    // Проверка на пустоту списка
+    // РџСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ СЃРїРёСЃРєР°
     bool isEmpty() const {
         return head == nullptr;
     }

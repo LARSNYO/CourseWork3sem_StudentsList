@@ -1,10 +1,10 @@
-#define _CRT_SECURE_NO_WARNINGS
+п»ї#define _CRT_SECURE_NO_WARNINGS
 #include "Student.h"
 #include <iostream>
 #include <cstring>
 #include <fstream>
 
-// Конструктор по умолчанию
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 Student::Student() {
     surname = new char[1];
     surname[0] = '\0';
@@ -20,7 +20,7 @@ Student::Student() {
     group[0] = '\0';
 }
 
-// Конструктор с параметрами
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
 Student::Student(const char* surname, const char* birthDate, const char* enrollmentDate, const char* dismissalDate, const char* address, const char* group) {
     this->surname = new char[strlen(surname) + 1];
     strcpy(this->surname, surname);
@@ -36,7 +36,7 @@ Student::Student(const char* surname, const char* birthDate, const char* enrollm
     strcpy(this->group, group);
 }
 
-// Конструктор копирования
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 Student::Student(const Student& other) {
     surname = new char[strlen(other.surname) + 1];
     strcpy(surname, other.surname);
@@ -52,7 +52,7 @@ Student::Student(const Student& other) {
     strcpy(group, other.group);
 }
 
-// Оператор присваивания
+// РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 Student& Student::operator=(const Student& other) {
     if (this != &other) {
         delete[] surname;
@@ -78,7 +78,7 @@ Student& Student::operator=(const Student& other) {
     return *this;
 }
 
-// Деструктор
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 Student::~Student() {
     delete[] surname;
     delete[] birthDate;
@@ -88,7 +88,7 @@ Student::~Student() {
     delete[] group;
 }
 
-// Геттеры и сеттеры
+// Р“РµС‚С‚РµСЂС‹ Рё СЃРµС‚С‚РµСЂС‹
 const char* Student::getSurname() const { return surname; }
 void Student::setSurname(const char* surname) {
     delete[] this->surname;
@@ -131,7 +131,7 @@ void Student::setGroup(const char* group) {
     strcpy(this->group, group);
 }
 
-// Перегруженные операторы сравнения
+// РџРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Рµ РѕРїРµСЂР°С‚РѕСЂС‹ СЃСЂР°РІРЅРµРЅРёСЏ
 bool Student::operator<(const Student& other) const {
     return strcmp(surname, other.surname) < 0;
 }
@@ -144,19 +144,19 @@ bool Student::operator==(const Student& other) const {
     return strcmp(surname, other.surname) == 0;
 }
 
-// Метод для вывода информации о студенте
+// РњРµС‚РѕРґ РґР»СЏ РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃС‚СѓРґРµРЅС‚Рµ
 void Student::print() const {
-    std::cout << "Фамилия: " << surname << ", "
-        << "Дата рождения: " << birthDate << ", "
-        << "Дата поступления: " << enrollmentDate << ", "
-        << "Дата отчисления: " << dismissalDate << ", "
-        << "Адрес: " << address << ", "
-        << "Группа: " << group << std::endl;
+    std::cout << "Р¤Р°РјРёР»РёСЏ: " << surname << ", "
+        << "Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ: " << birthDate << ", "
+        << "Р”Р°С‚Р° РїРѕСЃС‚СѓРїР»РµРЅРёСЏ: " << enrollmentDate << ", "
+        << "Р”Р°С‚Р° РѕС‚С‡РёСЃР»РµРЅРёСЏ: " << dismissalDate << ", "
+        << "РђРґСЂРµСЃ: " << address << ", "
+        << "Р“СЂСѓРїРїР°: " << group << std::endl;
 }
 
-// Сохранение и загрузка студента в бинарный файл
+// РЎРѕС…СЂР°РЅРµРЅРёРµ Рё Р·Р°РіСЂСѓР·РєР° СЃС‚СѓРґРµРЅС‚Р° РІ Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р»
 void Student::saveToFile(std::ofstream& file) const {
-    // Пример: записать строки в файл (возможно, нужно будет использовать фиксированную длину)
+    // РџСЂРёРјРµСЂ: Р·Р°РїРёСЃР°С‚СЊ СЃС‚СЂРѕРєРё РІ С„Р°Р№Р» (РІРѕР·РјРѕР¶РЅРѕ, РЅСѓР¶РЅРѕ Р±СѓРґРµС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С„РёРєСЃРёСЂРѕРІР°РЅРЅСѓСЋ РґР»РёРЅСѓ)
     size_t length;
 
     length = strlen(surname);
